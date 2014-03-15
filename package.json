@@ -1,0 +1,9 @@
+{
+    "name": "replaceport",
+    "version": "0.0.0",
+    "description": "Repository and distribution platform for Kerbal Space Program mods.",
+    "license": "All Rights Reserved",
+    "author": "Majiir <majiir@nabaal.net>",
+    "engines": { "node": "0.10.x" },
+    "private": true
+}
