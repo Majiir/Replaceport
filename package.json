@@ -4,6 +4,12 @@
     "description": "Repository and distribution platform for Kerbal Space Program mods.",
     "license": "All Rights Reserved",
     "author": "Majiir <majiir@nabaal.net>",
+    "devDependencies": {
+        "grunt-contrib-jshint": "^0.9.2",
+        "grunt-contrib-watch": "^0.6.0",
+        "grunt-cli": "^0.1.13",
+        "grunt": "^0.4.4"
+    },
     "engines": { "node": "0.10.x" },
     "private": true
 }
