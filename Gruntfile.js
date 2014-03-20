@@ -12,6 +12,23 @@ module.exports = function (grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		dusthtml: {
+			options: {
+				basePath: 'templates',
+				defaultExt: '.dust.html',
+			},
+			dist: {
+				src: 'templates/index.dust.html',
+				dest: 'static/index.html',
+			},
+			dev: {
+				src: 'templates/index.dust.html',
+				dest: 'static/index.html',
+				options: {
+					whitespace: true,
+				},
+			},
+		},
 		jshint: {
 			files: jshint_files,
 			options: {
@@ -58,6 +75,17 @@ module.exports = function (grunt) {
 			},
 		},
 		watch: {
+			dusthtml: {
+				files: [
+					'templates/container.dust.html',
+					'templates/index.dust.html',
+				],
+				tasks: ['dusthtml:dev'],
+				options: {
+					atBegin: true,
+					interrupt: true,
+				},
+			},
 			jshint: {
 				files: jshint_files,
 				tasks: ['jshint'],
@@ -88,8 +116,10 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-dust-html');
 
 	grunt.registerTask('default', [
+		'dusthtml:dist',
 		'jshint',
 		'less:dist',
 	]);
