@@ -15,14 +15,13 @@ module.exports = function (grunt) {
 		dusthtml: {
 			options: {
 				basePath: 'templates',
-				defaultExt: '.dust.html',
 			},
 			dist: {
-				src: 'templates/index.dust.html',
+				src: 'templates/index.dust',
 				dest: 'static/index.html',
 			},
 			dev: {
-				src: 'templates/index.dust.html',
+				src: 'templates/index.dust',
 				dest: 'static/index.html',
 				options: {
 					whitespace: true,
@@ -77,8 +76,8 @@ module.exports = function (grunt) {
 		watch: {
 			dusthtml: {
 				files: [
-					'templates/container.dust.html',
-					'templates/index.dust.html',
+					'templates/container.dust',
+					'templates/index.dust',
 				],
 				tasks: ['dusthtml:dev'],
 				options: {
