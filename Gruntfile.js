@@ -110,18 +110,41 @@ module.exports = function (grunt) {
 				},
 			},
 		},
+		nodemon: {
+			dev: {
+				script: 'server.js',
+				options: {
+					ignored: [
+						'Gruntfile.js',
+						'node_modules/**',
+						'bower_components/**',
+					],
+					watchedExtensions: ['js'],
+				},
+			},
+		},
+		concurrent: {
+			dev: {
+				tasks: ['watch', 'nodemon'],
+				options: {
+					logConcurrentOutput: true
+				},
+			},
+		},
 	});
 
+	grunt.loadNpmTasks('grunt-concurrent');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-dust-html');
+	grunt.loadNpmTasks('grunt-nodemon');
 
 	grunt.registerTask('default', [
 		'dusthtml:dist',
 		'jshint',
 		'less:dist',
 	]);
-	grunt.registerTask('dev', ['watch']);
+	grunt.registerTask('dev', ['concurrent']);
 
 };
