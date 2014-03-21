@@ -104,6 +104,7 @@ module.exports = function (grunt) {
 			static: {
 				files: [
 					'static/**/*',
+					'templates/**',
 				],
 				options: {
 					livereload: true,
